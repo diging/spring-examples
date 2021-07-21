@@ -1,0 +1,35 @@
+<html layout:decorate="~{layouts/main}">
+  <head>
+    <title>Authority Matcher</title>
+  </head>
+  <body>
+   <div layout:fragment="content">
+      <div class="jumbotron col-md-12">
+
+		<h1>Congratulation!</h1>
+		<p>
+		You did it. This basic webapp is all set up now. Try to login as "admin" with password "admin".
+		</p>
+
+      </div>
+      
+      <table id="results"></table>
+      
+      <script>
+      $(function() {
+    	  $.get( "ajax", function( data ) {
+    		  var tr = $("<tr></tr>");
+    		  var td1 = $("<td></td>");
+    		  tr.append(td1);
+    		  td1.text(data["uniqueId"]);
+    		  var td2 = $("<td></td>");
+    		  td2.text(data["timestamp"]);
+    		  tr.append(td2);
+              $( "#results" ).append(tr);              
+            });
+      });
+      
+      </script>
+   </div>
+  </body>
+</html>
